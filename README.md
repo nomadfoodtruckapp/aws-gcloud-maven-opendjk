@@ -1,5 +1,6 @@
-# aws-gcloud-maven-opendjk
+## aws-gcloud-maven-openjdk
 
-Base image: [https://github.com/Vincit/circleci-openjdk-gcloud](https://github.com/Vincit/circleci-openjdk-gcloud)
-
-AWS CLI
+AWS cli,
+Gcloud,
+Maven,
+OpenJDK
