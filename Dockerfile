@@ -1,20 +1,17 @@
-FROM circleci/openjdk:13.0.2-jdk-buster
+FROM cimg/openjdk:11.0
 MAINTAINER "nomadfoodtruckapp"
 
 USER root
 
-RUN apt-get -qy update &&  apt-get -qy install lsb-release apt-utils curl apt-transport-https ca-certificates gnupg unzip && \
-    echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" |  tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
-    apt-get update && apt-get -qy install google-cloud-sdk kubectl
-
+RUN curl https://github.com/cli/cli/releases/download/v0.10.1/gh_0.10.1_linux_amd64.deb
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
     ./aws/install
 
 
-RUN which aws && which gcloud && which kubectl
+RUN which aws
 
 USER circleci
+
 CMD [ "/bin/sh" ]
